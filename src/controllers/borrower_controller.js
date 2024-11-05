@@ -32,7 +32,7 @@ class BorrowerController {
 
   static async create(req, res) {
     try {
-      const newBorrower = await DB.Borrower.create(req.body); // Menggunakan `req.body` untuk data borrower baru
+      const newBorrower = await DB.Borrower.create(req.body);
       return ResponseHelper.success(res, newBorrower, 'Borrower created successfully', 201);
     } catch (error) {
       return ResponseHelper.error(res, error.message);

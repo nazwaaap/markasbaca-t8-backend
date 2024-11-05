@@ -6,7 +6,7 @@ class CategoryController  {
   static async getAll(req, res) {
     try {
       const items = await DB.Category.find();
-      return ResponseHelper.success(res, items, 'sukses mengambil data kategori');
+      return ResponseHelper.success(res, items, 'Sukses mengambil list data category');
     } catch (error) {
       return ResponseHelper.error(res, error.message);
     }
@@ -34,7 +34,7 @@ class CategoryController  {
     try {
 
       if(!req.params.id) {
-        return ResponseHelper.error(res,   'ID not provided!', 400);
+        return ResponseHelper.error(res, 'ID not provided!', 400);
       }
 
       const items = await DB.Category.findByIdAndUpdate(req.params.id, req.body);

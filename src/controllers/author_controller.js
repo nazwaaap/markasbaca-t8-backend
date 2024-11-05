@@ -6,7 +6,7 @@ class AuthorController  {
   static async getAll(req, res) {
     try {
       const items = await DB.Author.find();
-      return ResponseHelper.success(res, items, 'sukses mengambil data kategori');
+      return ResponseHelper.success(res, items, 'Sukses mengambil data author');
     } catch (error) {
       return ResponseHelper.error(res, error.message);
     }

@@ -6,17 +6,6 @@ class BorrowingController  {
 
   static async getAll(req, res) {
     try {
-
-      // query params
-      // kalo kirim, ada filter status
-      // kalo kaga get semua
-
-      // TRISULA EXPRESS JS
-      // req.query dapetin query params yang (?status=ACTIVE)
-      // req.params dapetin yang di endpoint misal /:id (req.params.id)
-      // req.body dapeting yang dikirim via body
-
-
       const filter = {}
 
       if(req.query.status) {
@@ -40,7 +29,7 @@ class BorrowingController  {
   }
 
   static async create(req, res) {
-    const session = await mongoose.startSession() //untuk membungkus transaksi
+    const session = await mongoose.startSession() 
     try {
       session.startTransaction()
 
@@ -53,7 +42,6 @@ class BorrowingController  {
 
       const createdBorrowingData = await DB.Borrowing.create(req.body);
 
-      // update borrower
       borrower.borrowHistory.push(createdBorrowingData._id)
 
       await borrower.save()
@@ -62,7 +50,7 @@ class BorrowingController  {
 
       return ResponseHelper.success(res, createdBorrowingData);
     } catch (error) {
-      await session.abortTransaction() //untuk rollback
+      await session.abortTransaction() 
 
       return ResponseHelper.error(res, error.message);
     } finally {

@@ -24,7 +24,7 @@ const BorrowingSchema = new mongoose.Schema({
       type: Date,
       default: null
     },
-    lateFee: { //kalo mau atur ini pokoknya ada di return pada controllers
+    lateFee: { 
       type: Number,
       default: 0,
       min: 0 
